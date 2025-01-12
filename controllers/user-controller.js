@@ -22,4 +22,18 @@ const getUserByIndex = (req, res) => {
   }
 };
 
-module.exports = { getUser, getUserByIndex };
+const deleteUserByIndex = (req, res) => {
+  try {
+    const id = req.params.id -1;
+    const result = userModel.deleteUser(id)
+    if (result === "Invalid Index") {
+      res.status(404).json({ message: "User not found"})
+    } else {
+      res.status(200).json({message: "Internal Server Error"})
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "Internet server error"})
+  }
+}
+module.exports = { getUser, getUserByIndex, deleteUserByIndex };

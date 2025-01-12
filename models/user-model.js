@@ -11,4 +11,12 @@ const getUserByIndex = (id) => {
   return "Index is greater than Array Length";
 };
 
-module.exports = { getUser, getUserByIndex };
+const deleteUser = (id) => {
+  if (id >= 0 && id < dataUser.length) {
+    dataUser.splice(id, 1);
+    return dataUser;
+  }
+  return "Invalid Index";
+}
+
+module.exports = { getUser, getUserByIndex, deleteUser };
